@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Глек «Полтавський» — RemesloUA</title>
+  <meta name="description" content="Керамічний глек ручної роботи з опішнянської глини від майстрині Оксани Гончар.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Inter:wght@400;500;600;700&amp;family=Unbounded:wght@600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти до основного вмісту</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="Логотип RemesloUA" width="40" height="40">
+        RemesloUA
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Меню</button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="product.html" aria-current="page">Товар</a></li>
+          <li><a href="about.html">Про нас</a></li>
+          <li><a href="contacts.html">Контакти</a></li>
+          <li><a href="login.html">Вхід</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="container">
+      <div class="page-title">
+        <nav class="breadcrumbs" aria-label="Навігаційний ланцюжок">
+          <ol>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="catalog.html#ceramics">Кераміка</a></li>
+            <li aria-current="page">Глек «Полтавський»</li>
+          </ol>
+        </nav>
+      </div>
+
+      <article class="product section" aria-labelledby="product-title">
+        <div class="gallery">
+          <img class="gallery-main" src="images/vase.svg" alt="Теракотовий керамічний глек з білими смугами — основне фото" width="400" height="500">
+          <div class="gallery-thumbs">
+            <button type="button" aria-label="Показати фото 1"><img src="images/vase.svg" alt="Глек «Полтавський», вигляд спереду" width="80" height="80"></button>
+            <button type="button" aria-label="Показати фото 2"><img src="images/hero.svg" alt="Глек «Полтавський» в інтер’єрі поруч зі свічкою" width="80" height="60"></button>
+            <button type="button" aria-label="Показати фото 3"><img src="images/master.svg" alt="Майстриня Оксана Гончар за роботою" width="80" height="80"></button>
+          </div>
+        </div>
+
+        <div>
+          <span class="badge badge-verified">Перевірений автор</span>
+          <h1 id="product-title">Глек «Полтавський»</h1>
+          <p class="rating"><span role="img" aria-label="Рейтинг 4.8 з 5">★★★★★</span> <span class="card-meta">4.8 (24 відгуки)</span></p>
+          <p class="price">850 грн</p>
+          <p>Глек сформовано вручну на гончарному крузі з червоної опішнянської глини, покрито ангобом і безпечною харчовою поливою. Підходить для молока, води та як декоративна ваза для сухоцвітів.</p>
+
+          <h2>Характеристики</h2>
+          <table class="specs">
+            <caption class="visually-hidden">Характеристики товару</caption>
+            <tbody>
+              <tr><th scope="row">Матеріал</th><td>Червона глина, полива</td></tr>
+              <tr><th scope="row">Об’єм</th><td>1,2 л</td></tr>
+              <tr><th scope="row">Висота</th><td>24 см</td></tr>
+              <tr><th scope="row">Регіон</th><td>Полтавщина, смт Опішня</td></tr>
+              <tr><th scope="row">Наявність</th><td>В наявності, 3 шт.</td></tr>
+              <tr><th scope="row">Термін відправлення</th><td>1–2 робочі дні</td></tr>
+            </tbody>
+          </table>
+
+          <form class="product-actions" action="#" method="post" data-validate data-success="Товар додано до кошика!" novalidate>
+            <label for="qty">Кількість</label>
+            <input type="number" id="qty" name="qty" value="1" min="1" max="3" required>
+            <button class="btn" type="submit">Додати в кошик</button>
+            <a class="btn btn-outline" href="login.html">♡ В обране</a>
+            <p class="form-error" id="qty-error" aria-live="polite"></p>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+
+          <div class="master-card">
+            <img src="images/master.svg" alt="Аватар майстрині Оксани Гончар" width="72" height="72" loading="lazy">
+            <div>
+              <h3>Оксана Гончар</h3>
+              <p class="card-meta">Опішня, Полтавщина · 128 виробів · на платформі з 2025 року</p>
+              <a href="about.html#sellers">Про умови співпраці з майстрами</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <section class="section" aria-labelledby="delivery-title">
+        <h2 id="delivery-title">Доставка та оплата</h2>
+        <ul>
+          <li>«Нова пошта» — відділення, поштомат або кур’єр (від 70 грн).</li>
+          <li>«Укрпошта» — по Україні та за кордон.</li>
+          <li>Оплата: накладений платіж або переказ за реквізитами майстра.</li>
+          <li>Повернення протягом 14 днів, якщо виріб не відповідає опису.</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="reviews-title">
+        <h2 id="reviews-title">Відгуки покупців</h2>
+        <ul class="reviews">
+          <li class="review">
+            <h3>Наталія, Київ</h3>
+            <p class="rating"><span role="img" aria-label="Оцінка 5 з 5">★★★★★</span></p>
+            <p>Глек ще гарніший, ніж на фото! Упаковано дуже надійно, дійшов за два дні.</p>
+          </li>
+          <li class="review">
+            <h3>Andrii, Warsaw</h3>
+            <p class="rating"><span role="img" aria-label="Оцінка 4 з 5">★★★★☆</span></p>
+            <p>Замовляв у подарунок мамі. Чудова якість, доставка до Польщі зайняла тиждень.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="similar-title">
+        <h2 id="similar-title">Схожі вироби</h2>
+        <ul class="grid">
+          <li class="card">
+            <img src="images/candle.svg" alt="Соєва свічка з теракотовою смугою" width="400" height="400" loading="lazy">
+            <div class="card-body">
+              <h3><a href="product.html">Свічка «Карпатський ранок»</a></h3>
+              <p class="price">320 грн</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/spoons.svg" alt="Дві дерев’яні ложки ручного різьблення" width="400" height="400" loading="lazy">
+            <div class="card-body">
+              <h3><a href="product.html">Набір ложок з ясена</a></h3>
+              <p class="price">420 грн</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/bag.svg" alt="Коричнева шкіряна сумка" width="400" height="400" loading="lazy">
+            <div class="card-body">
+              <h3><a href="product.html">Сумка «Львівська»</a></h3>
+              <p class="price">1 900 грн</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>RemesloUA</h2>
+          <p>Онлайн-маркетплейс та спільнота українських майстрів ручної роботи. Зроблено руками. Куплено серцем.</p>
+        </section>
+        <nav aria-label="Розділи сайту">
+          <h2>Розділи</h2>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+          </ul>
+        </nav>
+        <section>
+          <h2>Покупцям</h2>
+          <ul>
+            <li><a href="login.html">Вхід / Реєстрація</a></li>
+            <li><a href="about.html#sellers">Майстрам</a></li>
+            <li><a href="contacts.html#faq">Доставка і оплата</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Ми в мережі</h2>
+          <ul>
+            <li><a href="mailto:hello@remeslo.ua">hello@remeslo.ua</a></li>
+            <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+          </ul>
+        </section>
+      </div>
+      <p class="copyright"><small>&copy; 2026 RemesloUA. Навчальний проєкт, КПІ ім. Ігоря Сікорського.</small></p>
+    </div>
+  </footer>
+</body>
+</html>

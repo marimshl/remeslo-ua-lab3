@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RemesloUA — маркетплейс українських майстрів ручної роботи</title>
+  <meta name="description" content="Купуйте унікальні вироби ручної роботи напряму від українських майстрів: кераміка, вишивка, прикраси, дерево, шкіра.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Inter:wght@400;500;600;700&amp;family=Unbounded:wght@600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти до основного вмісту</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="Логотип RemesloUA" width="40" height="40">
+        RemesloUA
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Меню</button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul>
+          <li><a href="index.html" aria-current="page">Головна</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="product.html">Товар</a></li>
+          <li><a href="about.html">Про нас</a></li>
+          <li><a href="contacts.html">Контакти</a></li>
+          <li><a href="login.html">Вхід</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="section hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div>
+          <p class="slogan">Зроблено руками. Куплено серцем.</p>
+          <h1 id="hero-title">Маркетплейс українських майстрів ручної роботи</h1>
+          <p>Кераміка, вишивка, прикраси, вироби з дерева та шкіри — напряму від авторів з усіх куточків України. Перевірені майстри, чесні відгуки та безпечна доставка.</p>
+          <form class="search-form" action="catalog.html" method="get" role="search">
+            <label class="visually-hidden" for="hero-search">Пошук виробів</label>
+            <input type="search" id="hero-search" name="q" placeholder="Наприклад: керамічний глек">
+            <button class="btn" type="submit">Знайти</button>
+          </form>
+        </div>
+        <img class="hero-image" src="images/hero.svg" alt="Ілюстрація: керамічна ваза, глечик і свічка ручної роботи" width="800" height="600">
+      </div>
+    </section>
+
+    <section class="section section-light" aria-labelledby="categories-title">
+      <div class="container">
+        <h2 id="categories-title">Категорії</h2>
+        <ul class="categories">
+          <li><a href="catalog.html#ceramics">Кераміка</a></li>
+          <li><a href="catalog.html#textile">Текстиль і вишивка</a></li>
+          <li><a href="catalog.html#jewelry">Прикраси</a></li>
+          <li><a href="catalog.html#wood">Вироби з дерева</a></li>
+          <li><a href="catalog.html#leather">Шкіра</a></li>
+          <li><a href="catalog.html#candles">Свічки</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="new-title">
+      <div class="container">
+        <h2 id="new-title">Нові вироби</h2>
+        <ul class="grid">
+          <li class="card">
+            <img src="images/vase.svg" alt="Теракотовий керамічний глек з білими смугами" width="400" height="400" loading="lazy">
+            <div class="card-body">
+              <h3><a href="product.html">Глек «Полтавський»</a></h3>
+              <p class="card-meta">Оксана Гончар · Полтавщина</p>
+              <p class="price">850 грн</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/shirt.svg" alt="Біла лляна сорочка з червоною вишивкою" width="400" height="400" loading="lazy">
+            <div class="card-body">
+              <h3><a href="product.html">Вишиванка «Мальва»</a></h3>
+              <p class="card-meta">Ірина Ткач · Київщина</p>
+              <p class="price">2 400 грн</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/spoons.svg" alt="Дві дерев’яні ложки ручного різьблення" width="400" height="400" loading="lazy">
+            <div class="card-body">
+              <h3><a href="product.html">Набір ложок з ясена</a></h3>
+              <p class="card-meta">Андрій Різьбяр · Закарпаття</p>
+              <p class="price">420 грн</p>
+            </div>
+          </li>
+          <li class="card">
+            <img src="images/candle.svg" alt="Соєва свічка з теракотовою смугою та запаленим ґнотом" width="400" height="400" loading="lazy">
+            <div class="card-body">
+              <h3><a href="product.html">Свічка «Карпатський ранок»</a></h3>
+              <p class="card-meta">Світлана Віск · Львівщина</p>
+              <p class="price">320 грн</p>
+            </div>
+          </li>
+        </ul>
+        <p><a class="btn btn-outline" href="catalog.html">Увесь каталог</a></p>
+      </div>
+    </section>
+
+    <section class="section section-light" aria-labelledby="master-title">
+      <div class="container master-week">
+        <img src="images/master.svg" alt="Портрет майстрині Оксани Гончар" width="400" height="400" loading="lazy">
+        <div>
+          <h2 id="master-title">Майстер тижня</h2>
+          <h3>Оксана Гончар, Опішня <span class="badge badge-verified">Перевірений автор</span></h3>
+          <p>Оксана вже 15 років працює з полтавською глиною та відроджує традиційний опішнянський розпис. Кожен виріб формується вручну на гончарному крузі й випалюється у дров’яній печі.</p>
+          <blockquote>«Глина пам’ятає тепло рук — тому кожен глек неповторний».</blockquote>
+          <a class="btn" href="product.html">Переглянути вироби</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title">Як це працює</h2>
+        <ol class="steps">
+          <li><h3>Оберіть виріб</h3><p>Скористайтеся пошуком і фільтрами за категорією, ціною та регіоном.</p></li>
+          <li><h3>Оформіть замовлення</h3><p>Вкажіть дані отримувача та відділення «Нової пошти».</p></li>
+          <li><h3>Майстер підтвердить</h3><p>Ви отримаєте лист-підтвердження й номер ТТН для відстеження.</p></li>
+          <li><h3>Залиште відгук</h3><p>Ваша оцінка допомагає іншим покупцям і підтримує майстра.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section newsletter" aria-labelledby="newsletter-title">
+      <div class="container">
+        <h2 id="newsletter-title">Новини ярмарків і майстер-класів</h2>
+        <p>Підпишіться на розсилку — раз на тиждень, без спаму.</p>
+        <form action="#" method="post" data-validate data-success="Дякуємо за підписку!" novalidate>
+          <label class="visually-hidden" for="newsletter-email">Ваш email</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required>
+          <button class="btn" type="submit">Підписатися</button>
+        </form>
+        <p class="form-error" id="newsletter-email-error" aria-live="polite"></p>
+        <p class="form-status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>RemesloUA</h2>
+          <p>Онлайн-маркетплейс та спільнота українських майстрів ручної роботи. Зроблено руками. Куплено серцем.</p>
+        </section>
+        <nav aria-label="Розділи сайту">
+          <h2>Розділи</h2>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+          </ul>
+        </nav>
+        <section>
+          <h2>Покупцям</h2>
+          <ul>
+            <li><a href="login.html">Вхід / Реєстрація</a></li>
+            <li><a href="about.html#sellers">Майстрам</a></li>
+            <li><a href="contacts.html#faq">Доставка і оплата</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Ми в мережі</h2>
+          <ul>
+            <li><a href="mailto:hello@remeslo.ua">hello@remeslo.ua</a></li>
+            <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+          </ul>
+        </section>
+      </div>
+      <p class="copyright"><small>&copy; 2026 RemesloUA. Навчальний проєкт, КПІ ім. Ігоря Сікорського.</small></p>
+    </div>
+  </footer>
+</body>
+</html>

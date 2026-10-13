@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вхід і реєстрація — RemesloUA</title>
+  <meta name="description" content="Увійдіть або зареєструйтеся на RemesloUA як покупець чи майстер.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Inter:wght@400;500;600;700&amp;family=Unbounded:wght@600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти до основного вмісту</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="Логотип RemesloUA" width="40" height="40">
+        RemesloUA
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Меню</button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="product.html">Товар</a></li>
+          <li><a href="about.html">Про нас</a></li>
+          <li><a href="contacts.html">Контакти</a></li>
+          <li><a href="login.html" aria-current="page">Вхід</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="container">
+      <section class="page-title">
+        <nav class="breadcrumbs" aria-label="Навігаційний ланцюжок">
+          <ol>
+            <li><a href="index.html">Головна</a></li>
+            <li aria-current="page">Вхід / Реєстрація</li>
+          </ol>
+        </nav>
+        <h1>Вхід та реєстрація</h1>
+        <p>Увійдіть, щоб оформлювати замовлення та зберігати обране, або створіть обліковий запис покупця чи майстра.</p>
+      </section>
+
+      <div class="auth-layout section">
+        <section class="auth-box" aria-labelledby="login-title">
+          <h2 id="login-title">Вхід</h2>
+          <form class="form" action="#" method="post" data-validate data-success="Вхід виконано (демо-режим)." novalidate>
+            <div class="form-row">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" name="email" autocomplete="username" required>
+              <p class="form-error" id="login-email-error" aria-live="polite"></p>
+            </div>
+            <div class="form-row">
+              <label for="login-password">Пароль</label>
+              <input type="password" id="login-password" name="password" autocomplete="current-password" minlength="8" required>
+              <p class="form-error" id="login-password-error" aria-live="polite"></p>
+            </div>
+            <button class="btn" type="submit">Увійти</button>
+            <p><a href="contacts.html">Забули пароль?</a></p>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="auth-box" aria-labelledby="register-title">
+          <h2 id="register-title">Реєстрація</h2>
+          <form class="form" action="#" method="post" data-validate data-success="Обліковий запис створено! Перевірте пошту для підтвердження." novalidate>
+            <fieldset class="role-switch">
+              <legend>Я реєструюся як</legend>
+              <label class="checkbox"><input type="radio" name="role" value="buyer" checked> Покупець</label>
+              <label class="checkbox"><input type="radio" name="role" value="seller"> Майстер</label>
+            </fieldset>
+            <div class="form-row">
+              <label for="reg-name">Ім’я та прізвище</label>
+              <input type="text" id="reg-name" name="name" autocomplete="name" minlength="2" required>
+              <p class="form-error" id="reg-name-error" aria-live="polite"></p>
+            </div>
+            <div class="form-row">
+              <label for="reg-email">Email</label>
+              <input type="email" id="reg-email" name="email" autocomplete="email" required>
+              <p class="form-error" id="reg-email-error" aria-live="polite"></p>
+            </div>
+            <div class="form-row">
+              <label for="reg-password">Пароль</label>
+              <input type="password" id="reg-password" name="password" autocomplete="new-password" minlength="8" required aria-describedby="reg-password-hint">
+              <p class="form-hint" id="reg-password-hint">Щонайменше 8 символів.</p>
+              <p class="form-error" id="reg-password-error" aria-live="polite"></p>
+            </div>
+            <div class="form-row">
+              <label for="reg-password2">Повторіть пароль</label>
+              <input type="password" id="reg-password2" name="password2" autocomplete="new-password" minlength="8" required data-match="reg-password">
+              <p class="form-error" id="reg-password2-error" aria-live="polite"></p>
+            </div>
+            <label class="checkbox" for="reg-terms">
+              <input type="checkbox" id="reg-terms" name="terms" required>
+              Приймаю умови користування та політику конфіденційності
+            </label>
+            <p class="form-error" id="reg-terms-error" aria-live="polite"></p>
+            <button class="btn" type="submit">Зареєструватися</button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>RemesloUA</h2>
+          <p>Онлайн-маркетплейс та спільнота українських майстрів ручної роботи. Зроблено руками. Куплено серцем.</p>
+        </section>
+        <nav aria-label="Розділи сайту">
+          <h2>Розділи</h2>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+          </ul>
+        </nav>
+        <section>
+          <h2>Покупцям</h2>
+          <ul>
+            <li><a href="login.html">Вхід / Реєстрація</a></li>
+            <li><a href="about.html#sellers">Майстрам</a></li>
+            <li><a href="contacts.html#faq">Доставка і оплата</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Ми в мережі</h2>
+          <ul>
+            <li><a href="mailto:hello@remeslo.ua">hello@remeslo.ua</a></li>
+            <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+          </ul>
+        </section>
+      </div>
+      <p class="copyright"><small>&copy; 2026 RemesloUA. Навчальний проєкт, КПІ ім. Ігоря Сікорського.</small></p>
+    </div>
+  </footer>
+</body>
+</html>
