@@ -1,0 +1,253 @@
+/* ==========================================================================
+   responsive.css — медіазапити. Підхід mobile-first: базові стилі в інших
+   файлах розраховані на телефон (від 320 px), тут вони розширюються.
+     • ≥ 480 px  — великі телефони
+     • ≥ 768 px  — планшети
+     • ≥ 1024 px — ноутбуки та настільні комп’ютери
+   ========================================================================== */
+
+/* ---------- ≥ 480 px: великі телефони ---------- */
+
+@media (min-width: 480px) {
+  .search-form,
+  .newsletter-form {
+    flex-direction: row;
+  }
+
+  .card-body {
+    padding: var(--space-2);
+  }
+
+  .card-body h3 {
+    font-size: 16px;
+  }
+
+  .values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- ≥ 768 px: планшети ---------- */
+
+@media (min-width: 768px) {
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 20px; }
+
+  .section {
+    padding: var(--space-7) 0;
+  }
+
+  .container {
+    padding: 0 var(--space-3);
+  }
+
+  .site-header .container {
+    min-height: 72px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .slogan {
+    font-size: 32px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .master-week {
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-4);
+  }
+
+  .master-week > img {
+    width: 220px;
+  }
+
+  /* Каталог: фільтри зліва, товари справа */
+  .catalog-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+  .catalog-layout .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product,
+  .contacts-layout,
+  .auth-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .auth-box {
+    padding: var(--space-4);
+  }
+}
+
+/* ---------- ≥ 1024 px: десктоп ---------- */
+
+@media (min-width: 1024px) {
+  /* Таблиця повертається до звичайного вигляду */
+  .table-stack {
+    display: table;
+  }
+
+  .table-stack caption {
+    display: table-caption;
+  }
+
+  .table-stack thead {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    display: table-header-group;
+  }
+
+  .table-stack tbody {
+    display: table-row-group;
+  }
+
+  .table-stack tr {
+    display: table-row;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .table-stack tbody tr:nth-child(even) {
+    background-color: rgba(245, 240, 230, 0.6);
+  }
+
+  .table-stack td {
+    display: table-cell;
+    width: auto;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .table-stack td::before {
+    content: none;
+  }
+
+  h1 { font-size: 40px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 24px; }
+
+  .card-body h3 { font-size: 17px; }
+  .site-footer h2 { font-size: 16px; }
+
+  /* Бургер ховається, меню стає горизонтальним рядком (Flexbox) */
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    background: none;
+    box-shadow: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .main-nav ul {
+    flex-direction: row;
+    gap: var(--space-1);
+    padding: 0;
+  }
+
+  .main-nav a {
+    padding: 8px 14px;
+  }
+
+  .main-nav a[aria-current="page"] {
+    box-shadow: inset 0 -3px 0 var(--color-accent);
+  }
+
+  .hero .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .values {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .master-week {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .master-week > img {
+    width: 280px;
+  }
+
+  .catalog-layout {
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .catalog-layout .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product,
+  .contacts-layout,
+  .auth-layout {
+    gap: var(--space-5);
+  }
+
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ---------- Друк ---------- */
+
+@media print {
+  .site-header,
+  .site-footer,
+  .newsletter,
+  .filters,
+  .pagination {
+    display: none;
+  }
+
+  body {
+    background: #FFFFFF;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 12px;
+  }
+}

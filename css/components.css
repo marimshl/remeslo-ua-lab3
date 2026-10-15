@@ -1,0 +1,531 @@
+/* ==========================================================================
+   components.css — повторювані компоненти інтерфейсу: кнопки, картки,
+   бейджі, категорії, хлібні крихти, пагінація, галерея, відгуки тощо.
+   ========================================================================== */
+
+/* ---------- Кнопки ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 44px; /* зручна зона натискання на сенсорних екранах */
+  padding: 10px var(--space-3);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: background-color var(--transition), color var(--transition),
+    transform var(--transition), box-shadow var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-surface);
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-outline {
+  border-color: var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Слоган ---------- */
+
+.slogan {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-accent);
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--color-accent);
+}
+
+/* ---------- Пошук (Flexbox) ---------- */
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+.search-form input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ---------- Категорії-«пігулки» (Flexbox з переносом) ---------- */
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.categories li + li {
+  margin-top: 0;
+}
+
+.categories a {
+  display: block;
+  padding: 8px 18px;
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.categories a:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  text-decoration: none;
+}
+
+/* ---------- Картка товару (Flexbox по вертикалі) ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card > img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+}
+
+.card-body h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.card-body h3 a {
+  color: inherit;
+}
+
+/* Уся картка клікабельна завдяки розтягнутому посиланню */
+.card {
+  position: relative;
+}
+
+.card-body h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card-meta {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.price {
+  margin: auto 0 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ---------- Бейджі ---------- */
+
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+.badge-verified {
+  background-color: var(--color-success);
+}
+
+/* ---------- Кроки «Як це працює» (CSS-лічильник) ---------- */
+
+.steps {
+  counter-reset: step;
+}
+
+.steps li {
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: var(--space-1);
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-weight: 700;
+}
+
+.steps p {
+  margin: 0;
+}
+
+/* ---------- Хлібні крихти ---------- */
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  font-size: 14px;
+  list-style: none;
+}
+
+.breadcrumbs li + li {
+  margin-top: 0;
+}
+
+.breadcrumbs li + li::before {
+  content: "›";
+  margin-right: var(--space-1);
+  color: var(--color-muted);
+}
+
+/* ---------- Пагінація ---------- */
+
+.pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination li + li {
+  margin-top: 0;
+}
+
+.pagination a {
+  display: block;
+  min-width: 40px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.pagination a:hover {
+  text-decoration: none;
+  background-color: var(--color-line);
+}
+
+.pagination a[aria-current="page"] {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* ---------- Панель фільтрів ---------- */
+
+.filters {
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.filters fieldset {
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  border: 0;
+}
+
+.filters legend {
+  margin-bottom: var(--space-1);
+  padding: 0;
+  font-weight: 600;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 6px 0;
+}
+
+.filters input:not([type="checkbox"]),
+.filters select {
+  width: 100%;
+}
+
+/* ---------- Галерея товару ---------- */
+
+.gallery-main {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.gallery-thumbs button {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.gallery-thumbs button:hover,
+.gallery-thumbs button:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.gallery-thumbs img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Рейтинг і відгуки ---------- */
+
+.rating {
+  color: var(--color-accent);
+  letter-spacing: 2px;
+}
+
+.rating .card-meta {
+  letter-spacing: 0;
+}
+
+.reviews {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reviews li + li {
+  margin-top: 0;
+}
+
+.review {
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.review h3,
+.review p {
+  margin-bottom: 4px;
+}
+
+/* ---------- Картка майстра (Flexbox) ---------- */
+
+.master-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+}
+
+.master-card img {
+  flex: 0 0 64px;
+  width: 64px;
+  border-radius: 50%;
+}
+
+.master-card h3,
+.master-card p {
+  margin-bottom: 4px;
+}
+
+/* ---------- Команда ---------- */
+
+.team .card > img {
+  width: 120px;
+  margin: var(--space-3) auto 0;
+  border-radius: 50%;
+}
+
+.team .card-body {
+  text-align: center;
+}
+
+/* ---------- Контакти ---------- */
+
+.contact-list {
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list li + li {
+  margin-top: 12px;
+}
+
+.map {
+  width: 100%;
+  margin: var(--space-2) 0 var(--space-4);
+  border-radius: var(--radius);
+}
+
+/* ---------- Блок авторизації ---------- */
+
+.auth-box {
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Розсилка ---------- */
+
+.newsletter {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  text-align: center;
+}
+
+.newsletter h2 {
+  color: var(--color-surface);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  max-width: 520px;
+  margin: var(--space-3) auto 0;
+}
+
+.newsletter .form-error {
+  color: #FFD9D2;
+}
+
+.newsletter .form-success {
+  color: #D7F5C8;
+}
+
+/* ---------- Таблиця характеристик товару ---------- */
+
+.specs tbody th {
+  width: 40%;
+}
+
+/* ---------- Адаптивна таблиця: на телефоні рядок стає карткою ---------- */
+
+.table-stack thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.table-stack,
+.table-stack tbody,
+.table-stack tr,
+.table-stack td {
+  display: block;
+  width: 100%;
+}
+
+.table-stack tr {
+  margin-bottom: 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.table-stack tbody tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+.table-stack td {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: var(--space-1);
+  padding: 8px 12px;
+}
+
+.table-stack td:last-child {
+  border-bottom: 0;
+}
+
+.table-stack caption {
+  display: block;
+  width: 100%;
+}
+
+.table-stack td::before {
+  content: attr(data-label);
+  font-weight: 600;
+  color: var(--color-muted);
+}

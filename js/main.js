@@ -7,15 +7,34 @@ document.addEventListener("DOMContentLoaded", () => {
   initGallery();
 });
 
-// Кнопка «Меню» на мобільних екранах
+// Бургер-меню на мобільних і планшетах
 function initNavToggle() {
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("main-nav");
   if (!toggle || !nav) return;
 
-  toggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("is-open");
+  const label = toggle.querySelector(".visually-hidden");
+  const desktop = window.matchMedia("(min-width: 1024px)");
+
+  function setOpen(isOpen) {
+    nav.classList.toggle("is-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
+    if (label) label.textContent = isOpen ? "Закрити меню" : "Відкрити меню";
+  }
+
+  toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
+
+  // Закриття клавішею Esc з поверненням фокуса на кнопку
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.classList.contains("is-open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // Після переходу на десктопну ширину меню скидається в початковий стан
+  desktop.addEventListener("change", (event) => {
+    if (event.matches) setOpen(false);
   });
 }
 
@@ -42,6 +61,11 @@ function getMessage(el) {
 function validateField(el) {
   const errorBox = document.getElementById(`${el.id}-error`);
   let message = getMessage(el);
+
+  // minlength браузер перевіряє лише для введеного з клавіатури тексту — дублюємо перевірку
+  if (!message && el.minLength > 0 && el.value.length > 0 && el.value.length < el.minLength) {
+    message = messages.tooShort(el);
+  }
 
   if (!message && el.dataset.match) {
     const other = document.getElementById(el.dataset.match);

@@ -1,0 +1,217 @@
+/* ==========================================================================
+   forms.css — поля форм, кнопки, стани фокусу та валідації.
+   Помилки підсвічуються двома способами:
+   1) чистим CSS через :user-invalid — після того як користувач змінив поле;
+   2) атрибутом aria-invalid="true", який ставить js/main.js під час
+      надсилання форми (працює й у браузерах без :user-invalid).
+   ========================================================================== */
+
+.form {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 560px;
+}
+
+.form-row {
+  display: grid;
+  gap: 6px;
+}
+
+label {
+  font-weight: 500;
+}
+
+/* ---------- Текстові поля, списки, текстові області ---------- */
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 16px; /* 16 px — iOS Safari не збільшує сторінку при фокусі */
+  line-height: 1.4;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9A9287;
+  opacity: 1; /* Firefox за замовчуванням робить placeholder напівпрозорим */
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Власна стрілка для select (однаковий вигляд у всіх браузерах) */
+select {
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232F5D50' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;
+  cursor: pointer;
+}
+
+/* Прибираємо стрілки-лічильники в полі number */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* Фокус */
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.2);
+}
+
+/* ---------- Чекбокси та радіокнопки ---------- */
+
+input[type="checkbox"],
+input[type="radio"] {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 3px 0 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.role-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.role-switch legend {
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 0;
+  font-weight: 500;
+}
+
+/* ---------- Стани валідації ---------- */
+
+/* Помилка: червона рамка й тінь.
+   Правила розділено: браузер, що не знає :user-invalid, відкидає весь
+   список селекторів, тому варіант з aria-invalid має бути окремим. */
+[aria-invalid="true"] {
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important;
+}
+
+form[data-validate] input:user-invalid,
+form[data-validate] textarea:user-invalid {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15);
+}
+
+/* Успіх: зелена рамка після введення коректного значення */
+form[data-validate] input:not([type="checkbox"]):not([type="radio"]):not(:placeholder-shown):not([aria-invalid="true"]):user-valid,
+form[data-validate] textarea:not([aria-invalid="true"]):user-valid {
+  border-color: var(--color-success);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3 3 7-7' fill='none' stroke='%234C9A2A' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Чекбокс згоди з помилкою */
+input[type="checkbox"][aria-invalid="true"] {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+  box-shadow: none !important;
+}
+
+.form-hint {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* Текст помилки під полем (заповнює js/main.js) */
+.form-error {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-error);
+}
+
+.form-error:empty {
+  display: none;
+}
+
+.form-error:not(:empty)::before {
+  content: "⚠ ";
+}
+
+/* Повідомлення про успішне надсилання */
+.form-status:empty {
+  display: none;
+}
+
+.form-success {
+  margin: 0;
+  padding: 12px var(--space-2);
+  border-left: 4px solid var(--color-success);
+  border-radius: var(--radius-sm);
+  background-color: rgba(76, 154, 42, 0.1);
+  color: #2F6A16;
+  font-weight: 600;
+}
+
+.newsletter .form-success {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-left-color: #D7F5C8;
+}
+
+/* ---------- Форма «Додати в кошик» (Flexbox) ---------- */
+
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: var(--space-3) 0;
+}
+
+.product-actions input[type="number"] {
+  width: 80px;
+}
+
+.product-actions .form-error,
+.product-actions .form-status {
+  flex-basis: 100%;
+}

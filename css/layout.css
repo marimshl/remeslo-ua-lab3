@@ -1,0 +1,318 @@
+/* ==========================================================================
+   layout.css — каркас сторінок: контейнер, шапка, меню, секції,
+   сітки сторінок (CSS Grid) і рядки елементів (Flexbox), підвал.
+   Стилі написано за принципом mobile-first: тут — вигляд для телефона,
+   розширення для планшета й десктопа — у responsive.css.
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+}
+
+main {
+  display: block;
+}
+
+.section {
+  padding: var(--space-5) 0;
+}
+
+.section-light {
+  background-color: var(--color-surface);
+}
+
+.page-title {
+  padding: var(--space-4) 0 var(--space-1);
+}
+
+/* ---------- Шапка (Flexbox) ---------- */
+
+.site-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 64px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-surface);
+}
+
+.logo:hover {
+  color: var(--color-surface);
+  text-decoration: none;
+}
+
+.logo img {
+  width: 36px;
+  height: 36px;
+}
+
+/* ---------- Навігація: бургер-меню на мобільних ---------- */
+
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.burger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--color-surface);
+  transition: transform var(--transition), opacity var(--transition);
+  transform-origin: center;
+}
+
+/* Анімація «бургер → хрестик» */
+.nav-toggle[aria-expanded="true"] .burger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .burger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.main-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 0;
+  overflow: hidden;
+  background-color: var(--color-primary);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+  visibility: hidden;
+  transition: max-height 0.3s ease, visibility 0.3s;
+}
+
+.main-nav.is-open {
+  max-height: 480px;
+  visibility: visible;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: var(--space-1) var(--space-2) var(--space-2);
+  list-style: none;
+}
+
+.main-nav li + li {
+  margin-top: 0;
+}
+
+.main-nav a {
+  display: block;
+  padding: 12px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  color: var(--color-surface);
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-surface);
+  text-decoration: none;
+}
+
+.main-nav a[aria-current="page"] {
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+
+/* ---------- Головна: hero (Grid) ---------- */
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.hero .container > * {
+  min-width: 0;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* ---------- Сітка карток (Grid auto-fill) ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid > li + li {
+  margin-top: 0;
+}
+
+/* Кроки «Як це працює» та переваги */
+.steps,
+.values {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li + li {
+  margin-top: 0;
+}
+
+/* «Майстер тижня» */
+.master-week {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  justify-items: start;
+}
+
+.master-week > img {
+  width: 160px;
+  border-radius: 50%;
+}
+
+/* ---------- Каталог: бокова панель + товари (Grid) ---------- */
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.catalog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: var(--space-3);
+}
+
+.catalog-toolbar p {
+  margin: 0;
+}
+
+/* ---------- Сторінка товару (Grid) ---------- */
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.product > * {
+  min-width: 0;
+}
+
+/* ---------- Контакти та авторизація (Grid) ---------- */
+
+.contacts-layout,
+.auth-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.contacts-layout > *,
+.auth-layout > * {
+  min-width: 0;
+}
+
+/* ---------- Підвал (Grid) ---------- */
+
+.site-footer {
+  padding: var(--space-5) 0 var(--space-3);
+  background-color: var(--color-text);
+  color: #E8E2D6;
+  font-size: 15px;
+}
+
+.site-footer a {
+  color: #E8E2D6;
+}
+
+.site-footer a:hover {
+  color: var(--color-surface);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.site-footer h2 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: var(--color-surface);
+}
+
+.site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer li + li {
+  margin-top: 6px;
+}
+
+.copyright {
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid #3A3631;
+  text-align: center;
+}
